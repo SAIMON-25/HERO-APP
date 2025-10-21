@@ -3,7 +3,7 @@ import Home from "../pages/home/Home";
 import Root from "../pages/root/Root";
 import Error from "../pages/error/Error";
 
-
+const url = '/appData.json'
 
 const router = createBrowserRouter([
   {
@@ -13,7 +13,13 @@ const router = createBrowserRouter([
     children:[
         {
           index:true, 
+          loader: ()=> fetch(url),
           Component:Home
+        },
+        {
+          path:'/allApps',
+            loader: ()=> fetch(url),
+            
         },
         {
           path:'*',

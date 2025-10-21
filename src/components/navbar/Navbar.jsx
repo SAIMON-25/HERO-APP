@@ -10,7 +10,7 @@ const Navbar = () => {
   const links = (
     <>
       <NavLink to={'/'} >Home</NavLink>
-      <NavLink>Apps</NavLink>
+      <NavLink to={'/allApps'}>Apps</NavLink>
       <NavLink>Installation</NavLink>
     </>
   );
@@ -43,7 +43,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <div className="btn btn-ghost text-xl"> <img className="h-full" src={logo}/> <span className="text-3xl font-extrabold text-gradient">HERO.IO</span></div>
+        <NavLink to={'/'}><div className="btn btn-ghost text-xl"> <img className="h-full" src={logo}/> <span className="text-3xl font-extrabold text-gradient">HERO.IO</span></div></NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-10 font-semibold">{links}</ul>
