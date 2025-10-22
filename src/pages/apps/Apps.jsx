@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router";
 import AppCard from "../../components/appcard/AppCard";
+import NoApp from "../../components/noApp/NoApp";
 
 const Apps = () => {
   const apps = useLoaderData();
+
+  const [searchItems,setSearchItem] = useState('')
+  // console.log(searchItems);
+
+  const items = apps.filter(app => app.title.toLowerCase().includes(searchItems.toLowerCase()))
+  
+  // console.log(items);
+
+  
+  
 
   return (
     <div className="px-15">
@@ -14,7 +25,7 @@ const Apps = () => {
         Explore All Apps on the Market developed by us. We code for Millions
       </h1>
       <div className="flex justify-between items-center mb-7">
-        <h1 className="text-2xl font-bold">(132) App Found</h1>
+        <h1 className="text-2xl font-bold">({items.length}) App Found</h1>
         <label className="input rounded-xl">
           <svg
             className="h-[1em] opacity-50"
@@ -32,15 +43,41 @@ const Apps = () => {
               <path d="m21 21-4.3-4.3"></path>
             </g>
           </svg>
-          <input type="search" required placeholder="Search" />
+          <input 
+          type="search"
+           required
+           value={searchItems}
+           onChange={(e)=>setSearchItem(e.target.value)} 
+           placeholder="Search" 
+           />
         </label>
       </div>
 
-      <div className="grid grid-cols-4 gap-10 mb-20">
-        {apps.map((app, index) => (
+
+
+    {
+      items.length > 0 ?
+      ( <div className="grid sm:grid-cols-4 gap-10 mb-20">
+        {items.map((app, index) => (
           <AppCard key={index} app={app}></AppCard>
         ))}
-      </div>
+         </div>):
+        (
+          <NoApp setSearchItem={setSearchItem}></NoApp>
+        )
+    }
+
+
+
+
+
+
+
+     
+
+
+
+     
     </div>
   );
 };

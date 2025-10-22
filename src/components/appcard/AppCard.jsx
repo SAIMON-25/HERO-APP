@@ -8,7 +8,7 @@ const AppCard = ({ app }) => {
  
 
     if (!app) return null;
-    const { image,title,ratingAvg } = app;
+    const { image,title,ratingAvg,downloads } = app;
     // console.log(app);
 
     return (
@@ -32,7 +32,7 @@ const AppCard = ({ app }) => {
             <div className="w-full flex justify-between items-center mt-2 text-xs">
                 <div className="flex items-center gap-1 text-green-600 p-2 rounded-lg bg-[#FFF0E1] ">
                     <img className="h-4" src={download} alt="" />
-                    <span>90M</span>
+                    <span>{downloads}</span>
                 </div>
                 <div className="flex bg-[#FFF0E1] justify-center p-2 rounded-lg items-center gap-1 text-orange-500">
                     <span>{ratingAvg}</span>

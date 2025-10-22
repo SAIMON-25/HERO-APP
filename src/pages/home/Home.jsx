@@ -26,7 +26,7 @@ const Home = () => {
       </div>
 
       <div className="text-center mb-25">
-       <NavLink to={'/allApps'}> <button className="btn rounded-xl px-10 py-5 text-xl bg-gradient-to-r from-[#632ee3] to-[#9f62f2] text-white">Show All</button></NavLink>
+       <NavLink to={'/allApps'}> <button className="btn rounded-xl px-10 py-5 text-xl bg-gradient-to-r from-[#632ee3] to-[#9f62f2] text-white hover:opacity-70">Show All</button></NavLink>
       </div>
     </>
   );

@@ -16,11 +16,11 @@ const Banner = () => {
           into digital experiences that truly make an impact.
         </h1>
         <div className="flex justify-center mb-10 gap-5 sm:gap-15">
-          <a href="https://play.google.com/store/games?hl=en" className="btn">
+          <a href="https://play.google.com/store/games?hl=en" className="btn hover:bg-gradient-to-r from-[#632ee3] to-[#481097] hover:text-white transition-all duration-600">
             <img src={playStore} alt="" />{" "}
             <span className="mx-2">Google Play</span>
           </a>
-          <a href="https://www.apple.com/app-store/" className="btn">
+          <a href="https://www.apple.com/app-store/" className="btn hover:bg-gradient-to-r from-[#632ee3] to-[#481097] hover:text-white transition-all duration-600">
             <img src={appleStore} alt="" />{" "}
             <span className="mx-2">Apple Store</span>
           </a>
