@@ -12,15 +12,13 @@ const AppCard = ({ app }) => {
   return (
     <NavLink to={`/allApps/${id}`}>
       <div className=" bg-gray-50 rounded-2xl shadow-md p-3 flex flex-col items-center justify-between hover:shadow-xl transition-shadow duration-300">
-        <div className="w-full  bg-gray-200 rounded-xl overflow-hidden flex items-center justify-center">
-          {image ? (
+        <div className="w-full   bg-gray-200 rounded-xl overflow-hidden flex items-center justify-center">
+          
             <img
               src={image}
-              className="object-cover w-full h-full bg-gray-200"
+              className="object-contain  w-400 h-100 bg-gray-200"
             />
-          ) : (
-            <div className="text-gray-400 text-sm">No Image</div>
-          )}
+           
         </div>
 
         <div className="w-full text-center mt-3">
