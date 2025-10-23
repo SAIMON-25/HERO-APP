@@ -10,11 +10,11 @@ const Error = () => {
     }
 
     return (
-        <div className='flex justify-center items-center my-10'>
+        <div className='flex justify-center items-center my-22'>
             <div className=' text-center'>
                 <img src={error} alt="" />
-                <h1 className='text-3xl font-semibold my-3'>Oops, page not found</h1>
-                <h1 className='my-3'>The page you are looking for is not available.</h1>
+                <h1 className='text-4xl font-semibold my-3'>Oops, page not found</h1>
+                <h1 className='mb-10'>The page you are looking for is not available.</h1>
                 <button onClick={handleNavigate} className='btn bg-gradient-to-r from-[#632ee3] to-[#9f62f2] text-white'>Go back !</button>
             </div>
         </div>

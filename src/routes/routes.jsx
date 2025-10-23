@@ -3,6 +3,7 @@ import Home from "../pages/home/Home";
 import Root from "../pages/root/Root";
 import Error from "../pages/error/Error";
 import Apps from "../pages/apps/Apps";
+import AppDetail from "../pages/app_detail/AppDetail";
 
 const url = "/appData.json";
 
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
         path: "/allApps",
         loader: () => fetch(url),
         Component: Apps,
+      },
+      {
+        path:'/allApps/:appId',
+        loader: ()=> fetch(url),
+        Component:AppDetail
       },
       {
         path: "*",
