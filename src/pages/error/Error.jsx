@@ -10,7 +10,7 @@ const Error = () => {
     }
 
     return (
-        <div className='flex justify-center items-center my-22'>
+        <div className='flex justify-center items-center min-h-screen'>
             <div className=' text-center'>
                 <img src={error} alt="" />
                 <h1 className='text-4xl font-semibold my-3'>Oops, page not found</h1>

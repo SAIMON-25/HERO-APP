@@ -13,6 +13,7 @@ import download from "../../assets/icon-downloads.png";
 import star from "../../assets/icon-ratings.png";
 import review from "../../assets/icon-review.png";
 import { Bounce, ToastContainer, toast } from "react-toastify";
+import { getLocalItem, setLocalItem } from "../../utilities/utility";
 
 const AppDetail = () => {
   const apps = useLoaderData();
@@ -21,7 +22,7 @@ const AppDetail = () => {
 
   // console.log(appId);
   const app = apps.filter((app) => app.id == appId);
-  console.log(app);
+  // console.log(app);
 
   if (!app) {
     return null;
@@ -37,13 +38,18 @@ const AppDetail = () => {
     ratingAvg,
     downloads,
     ratings,
+    id,
   } = app[0];
 
   // console.log(ratings);
+  const applist = getLocalItem();
+  // console.log(applist);
+  
 
-  const handleClick = () => {
+  const handleClick = (id) => {
     setClicked(true);
     clicked || toast("Successfully installed");
+    setLocalItem(id);
   };
 
   return (
@@ -89,12 +95,12 @@ const AppDetail = () => {
 
           <div>
             <button
-              onClick={handleClick}
+              onClick={() => handleClick(id)}
               className={`ml-auto bg-green-500 text-white px-5 py-2 rounded-md font-semibold hover:bg-green-600 ${
                 clicked ? "disabled" : ""
               } `}
             >
-              {clicked ? `Installed` : `Install Now (${size} MB)`}
+              {clicked || applist.includes(id) ? `Installed` : `Install Now (${size} MB)`}
             </button>
           </div>
         </div>
