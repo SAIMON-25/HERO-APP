@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router";
 import {
   BarChart,
@@ -14,11 +14,20 @@ import star from "../../assets/icon-ratings.png";
 import review from "../../assets/icon-review.png";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import { getLocalItem, setLocalItem } from "../../utilities/utility";
+import LoadingSpinner from "../../components/loading/LoadingSpinner";
 
 const AppDetail = () => {
   const apps = useLoaderData();
   const { appId } = useParams();
   const [clicked, setClicked] = useState(false);
+  const [loading,setLoading] = useState(false);
+
+  useEffect(()=>{
+    setLoading(true);
+    setTimeout(()=>{
+      setLoading(false);
+    },1000)
+  },[])
 
   // console.log(appId);
   const app = apps.filter((app) => app.id == appId);
@@ -53,7 +62,10 @@ const AppDetail = () => {
   };
 
   return (
-    <div className=" mx-auto bg-white px-5 sm:px-25  my-25">
+      <>
+      
+      {
+        loading ? <LoadingSpinner></LoadingSpinner> :  ( <div className=" mx-auto bg-white px-5 sm:px-25  my-25">
       <div className="grid  sm:grid-cols-4 sm:gap-15 border-b-2 border-gray-200 pb-15">
         <div>
           <img src={image} alt="App Logo" className="w-100 mb-5 sm:mb-0" />
@@ -154,7 +166,10 @@ const AppDetail = () => {
         theme="light"
         transition={Bounce}
       />
-    </div>
+    </div>)
+      }
+
+      </>
   );
 };
 
