@@ -5,16 +5,24 @@ import downloadicon from "../../assets/icon-downloads.png";
 import staricon from "../../assets/icon-ratings.png";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 
-
-
 const InstalledApps = () => {
   const [localApps, setLocalApps] = useState([]);
+  const [sortby,setSortby] = useState('');
   const applist = useLoaderData();
 
   useEffect(() => {
-    setLocalApps(getLocalItem())
+    setLocalApps(getLocalItem());
   }, []);
   const apps = applist.filter((app) => localApps.includes(app.id));
+
+
+  if(sortby=='ascending'){
+    apps.sort((a,b)=>a.size - b.size)
+  }
+  else if(sortby == 'descending'){
+        apps.sort((a,b)=>b.size - a.size)
+  }
+
 
   const handleUninstall = (id) => {
     removeLocalItem(id);
@@ -38,11 +46,17 @@ const InstalledApps = () => {
           ({apps.length}) App{apps.length > 1 ? "s" : ""} Found
         </p>
 
-        <select className="border rounded px-3 py-1 text-gray-600 text-sm focus:outline-none">
-          <option>Sort By Size</option>
-          <option>Sort By Name</option>
-          <option>Sort By Rating</option>
-        </select>
+        <details className="dropdown">
+          <summary className="btn m-1">Sort By</summary>
+          <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+            <li onClick={()=>setSortby('descending')}>
+              <a>Descending</a>
+            </li>
+            <li onClick={()=>setSortby('ascending')}>
+              <a>Ascending</a>
+            </li>
+          </ul>
+        </details>
       </div>
 
       <div className="space-y-4">
@@ -89,18 +103,18 @@ const InstalledApps = () => {
       </div>
 
       <ToastContainer
-              position="top-center"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop
-              closeOnClick={false}
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
-              transition={Bounce}
-            />
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
     </div>
   );
 };
